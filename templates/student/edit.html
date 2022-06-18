@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{%block title%} 
+<title>แก้ไขข้อมูลนักศึกษา</title>
+
+{%endblock%}
+{% block content %}
+<header id="portfolio">
+  <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+  <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+  <div class="w3-container">
+  <h1><b> แก้ไขข้อมูล </b></h1>
+  <div class="w3-section w3-bottombar w3-padding-16">
+    <span class="w3-margin-right">Filter:</span> 
+    <button class="w3-button w3-white" onclick="document.location='addstudent'"><i class="fa fa-plus w3-margin-right"></i>นักศึกษา</button>
+        <button class="w3-button w3-white" onclick="document.location='import'"><i class="fa fa-plus w3-margin-right"></i>Import</button>
+        <button class="w3-button w3-white" onclick="document.location='export'"><i class="fa fa-plus w3-margin-right"></i>Export</button>
+  </div>
+  </div> 
+
+</header>
+
+
+<div class="w3-third w3-container w3-margin-bottom">
+    <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
+    <div class="w3-container w3-white">
+  
+      <form action="" method="post">
+        {% csrf_token %}
+        <ul>
+          {{ form.as_ul }}
+        </ul>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+  
+
+{% endblock %}

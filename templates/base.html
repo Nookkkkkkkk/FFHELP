@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% block title %} {% endblock %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/login/style.css">
+<link rel="stylesheet" href="/static/login/button.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+</style>
+</head>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="/w3images/avatar_g2.jpg" style="width:45%;" class="w3-round"><br><br>
+    <h4><b>{{user.first_name}} {{user.last_name}}</b></h4>
+    <p class="w3-text-grey">Welcome</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo "><i class="fa fa-th-large fa-fw w3-margin-right"></i>หน้าแรก</a> 
+    <a href="{% url 'liststudent' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo"><i class="fa fa-users fa-fw w3-margin-right"></i>รายชื่อนักศึกษา</a> 
+    <a href="{% url 'listestablishment' %}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo"><i class="fa fa-list fa-fw w3-margin-right"></i>สถานที่ประกอบการ</a>
+    <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo"><i class="fa fa-file-word-o fa-fw w3-margin-right"></i>เอกสาร</a>
+    <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo"><i class="fa fa-plus fa-fw w3-margin-right"></i>เพิ่มข้อมูล</a>
+    <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo"><i class="fa fa-calendar fa-fw w3-margin-right"></i>ปฎิทินสหกิจ</a> 
+    <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-indigo"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+    <br>
+    <!-- clock widget start -->
+<script type="text/javascript"> var css_file=document.createElement("link"); css_file.setAttribute("rel","stylesheet"); css_file.setAttribute("type","text/css"); css_file.setAttribute("href","https://s.bookcdn.com//css/cl/bw-cl-100x100.css?v=0.0.1"); document.getElementsByTagName("head")[0].appendChild(css_file); </script> <div id="tw_4_812739261"><div style="width:100px; height:100px; margin: 0 auto;"><a href="https://www.booked.net/time/khon-kaen-16141">Khon Kaen</a><br/></div></div> <script type="text/javascript"> function setWidgetData_812739261(data){ if(typeof(data) != 'undefined' && data.results.length > 0) { for(var i = 0; i < data.results.length; ++i) { var objMainBlock = ''; var params = data.results[i]; objMainBlock = document.getElementById('tw_'+params.widget_type+'_'+params.widget_id); if(objMainBlock !== null) objMainBlock.innerHTML = params.html_code; } } } var clock_timer_812739261 = -1; widgetSrc = "https://widgets.booked.net/time/info?ver=2;domid=;type=4;id=812739261;scode=2;city_id=16141;wlangid=1;mode=0;details=0;background=757173;border_color=ffffff;color=ffffff;add_background=ffffff;add_color=c9207b;head_color=ffffff;border=0;transparent=0"; var widgetUrl = location.href; widgetSrc += '&ref=' + widgetUrl; var wstrackId = ""; if (wstrackId) { widgetSrc += ';wstrackId=' + wstrackId + ';' } var timeBookedScript = document.createElement("script"); timeBookedScript.setAttribute("type", "text/javascript"); timeBookedScript.src = widgetSrc; document.body.appendChild(timeBookedScript); </script>
+    <!-- clock widget end -->
+
+    <!-- <form action="logout" method="post">{% csrf_token %}
+        <center><button class="button button2">Logout</button></center>
+    </form> -->
+  </div>
+  <div class="w3-panel w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  
+  {% block content %}
+
+  {% endblock %}
+  <!-- Pagination -->
+  
+
+  
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
